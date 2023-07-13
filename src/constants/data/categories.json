@@ -1,0 +1,23 @@
+[
+    
+        {
+            "id": 1,
+            "categoryName": "Top"
+           
+        },
+        {
+            "id": 2,
+            "categoryName": "Vestido"
+           
+        },
+        {
+            "id": 3,
+            "categoryName": "Camisa"
+           
+        }, 
+        {
+            "id": 4,
+            "categoryName": "Falda"
+        }
+
+]
