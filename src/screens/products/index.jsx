@@ -1,4 +1,4 @@
-import { FlatList, SafeAreaView, Text, View, Image, Button, TouchableOpacity} from "react-native";
+import { FlatList, SafeAreaView, Text, View, Image, Button, TouchableOpacity, useWindowDimensions} from "react-native";
 import { useState } from "react";
 import { styles } from "./styles";
 import PRODUCTS from '../../constants/data/products.json'
@@ -6,16 +6,18 @@ import { Ionicons} from '@expo/vector-icons'
 import { COLORS } from "../../themes";
 import { Input } from "../../components";
 
-function Products ({onHandleGoBack, categorySelected, onHandleGoDetail, productId}) {
 
+function Products ({navigation, route}) {
+    const {categoryId} = route.params;
+    const {height, width} = useWindowDimensions();
     const [search, setSearch] = useState('')
     const [filteredProducts, setFilteredProducts] = useState([])
-
+    const isTablet = width > 650
     const onHandleChangeText = (text) => {
         setSearch(text);
         filterBySearch(text);
     }
-    const filteredByCategory = PRODUCTS.filter((product) => product.categoryId === categorySelected.categoryId);
+    const filteredByCategory = PRODUCTS.filter((product) => product.categoryId === categoryId);
 
     const filterBySearch = (text) => {
         let updatedProductList = [...filteredByCategory]
@@ -31,12 +33,11 @@ function Products ({onHandleGoBack, categorySelected, onHandleGoDetail, productI
         setSearch('');
         setFilteredProducts([]);
     }
- 
+    const onHandleGoDetail = ({productId}) => {
+        navigation.navigate('ProductDetail', {productId})
+    }
     return(
        <View>
-             <TouchableOpacity style={styles.goBack} onPress={onHandleGoBack}>
-                 <Ionicons name="arrow-back-circle" size={30} color={COLORS.black} />
-             </TouchableOpacity>
              <View style={styles.header}>
             <Input
             onHandleChangeText={onHandleChangeText}
@@ -50,11 +51,11 @@ function Products ({onHandleGoBack, categorySelected, onHandleGoDetail, productI
             data={search.length > 0 ? filteredProducts : filteredByCategory}
             renderItem={({item}) => 
             <View style={styles.containerProduct}>                
-            <Image source={{ uri: item.image}} style={styles.productImage}/>
+            <Image source={{ uri: item.image}} style={height<450 ? styles.productImageLandscape : isTablet? styles.productImageTablet : styles.productImage}/>
             <View style={styles.detailProduct}>
-            <Text style={styles.productName}> {item.categoryName} {item.name} </Text>
-            <Text> ${item.price}</Text>
-            <TouchableOpacity style={styles.detalle} onPress={() => onHandleGoDetail(item.id)}>
+            <Text style={height<450 ? styles.productnameLandsCape : isTablet? styles.productNameTablet : styles.productName}> {item.categoryName} {item.name} </Text>
+            <Text style={height<450 ? styles.productPriceLandsCape : isTablet? styles.productPriceTablet : styles.productPrice }> ${item.price}</Text>
+            <TouchableOpacity style={isTablet? styles.detalleTablet : height<450 ? detalleLandscape : styles.detalle} onPress={() => onHandleGoDetail({productId: item.id})}>
                  <Text style={styles.textdetalle}> Detalle </Text> 
             </TouchableOpacity>
             </View>

@@ -4,7 +4,8 @@ export const styles = StyleSheet.create({
     containerinput : {
         
         marginBottom: 20,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        margin: 15,
     },
     input: {
        
@@ -15,6 +16,7 @@ export const styles = StyleSheet.create({
       color: COLORS.text,
       fontSize: 14,
       height: 35,
+      
     },
 
 })

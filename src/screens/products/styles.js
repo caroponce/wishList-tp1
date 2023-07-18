@@ -16,6 +16,17 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
       */
     },
+    productImageTablet: {
+      width: '100%',
+      height: 450,
+    },
+    productImageLandscape:{
+      width: '90%',
+      height: 100
+    },
+    productNameLandscape: {
+      color: 'red'
+    },
     detailProduct:{
     marginTop: 10,
     alignItems: 'center'
@@ -25,10 +36,29 @@ export const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontFamily: 'Mulish-Regular'
       },
+      productNameTablet: {
+        fontSize: 22,
+      },
+      productnameLandsCape: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        fontFamily: 'Mulish-Regular'
+      },
+
       productPrice: {
         fontSize: 14,
         marginTop: 5,
         fontFamily: 'Mulish-Regular'
+      },
+      productPriceLandsCape: {
+        fontSize: 14,
+        marginTop: 5,
+        fontFamily: 'Mulish-Regular'
+      },
+      productPriceTablet: {
+      fontSize: 22,
+      marginTop: 7,
+      fontFamily: 'Mulish-Regular'
       },
       detalle: {
         backgroundColor: COLORS.primary,
@@ -38,11 +68,29 @@ export const styles = StyleSheet.create({
         borderWidth: 1,
         fontFamily: 'Mulish-Regular'
     },
+    detalleTablet: {
+      backgroundColor: COLORS.primary,
+      margin: 7,
+      borderColor: 'black',
+        borderRadius: 2,
+        borderWidth: 1,
+        fontFamily: 'Mulish-Regular',
+        fontSize: 25,
+    },
+    detalleLandscape :{
+      backgroundColor: COLORS.primary,
+      margin: 5,
+      borderColor: 'black',
+        borderRadius: 2,
+        borderWidth: 1,
+        fontFamily: 'Mulish-Regular',
+        fontSize: 20,
+    },
     clearIcon: {
       position: 'absolute',
       zIndex: 2,
-      right: 25,
-      top: 3,
+      right: 39,
+      top: 17,
     },
     goBack: {
       paddingHorizontal: 20,

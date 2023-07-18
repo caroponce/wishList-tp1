@@ -37,6 +37,7 @@ export const styles = StyleSheet.create({
   },
   text: {
     fontSize: 17,
-    fontFamily: 'Mulish-Regular'
+    fontFamily: 'Mulish-Regular',
+    
   }
     })

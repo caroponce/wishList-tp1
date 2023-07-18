@@ -4,10 +4,13 @@ import { COLORS } from "../../../themes"
 export const styles = StyleSheet.create ({
 
     container: {
-       
         backgroundColor:  COLORS.primary,        
         borderRadius: 20,
         alignItems: 'center',
+        justifyContent: 'center',
+        height: 60,
+        
+        
     },
     
 
@@ -17,5 +20,11 @@ categoryName: {
     padding: 20,       
     fontFamily: 'Mulish-Regular'
 
+},
+categoryNameTablet: {
+    fontSize: 25,
+},
+categoryNameLandscape: {
+    fontSize: 20,
 }
 })
