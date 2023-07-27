@@ -7,7 +7,9 @@
     "categoryId": 1,
     "image":"https://i.ibb.co/DRmY8Jy/topkika.webp",
     "stock": "20", 
+    "quantity": 1,
     "description": "Top tejido color verde"
+    
     },
     {
          "id": 2,
@@ -17,8 +19,11 @@
     "categoryId": 1,
     "image": "https://i.ibb.co/9Tq5Pvv/toplisa.webp",
      "stock": 20, 
+     
+     "quantity": 1,
      "description":"top con moño color verde claro"},
-
+  
+     
     {
     "id": 3,
      "name": "Nina",
@@ -27,6 +32,7 @@
        "categoryId": 1,
      "image":"https://i.ibb.co/2KxNs5v/topnina.webp", 
      "stock": 25, 
+     "quantity": 1,
      "description": "top floreado con volados"},
 
     { 
@@ -36,7 +42,9 @@
     "categoryName": "Vestido",
     "categoryId": 2,
     "image":"https://i.ibb.co/vknkMV5/vestidoeva.webp",
+
      "stock": 20,
+     "quantity": 1,
       "description":"vestido floreado con espalda cruzada"},
     
     { 
@@ -47,6 +55,7 @@
      "categoryId": 2,
      "image":"https://i.ibb.co/7NNrXVF/vestidobianca.webp",
       "stock": 22,
+      "quantity": 1,
        "description":"vestido bordo, con nudo en los breteles"},
     
      { 
@@ -57,6 +66,7 @@
            "categoryId": 3,
      "image":"https://i.ibb.co/W6fkQLS/camisanuri.webp", 
      "stock": 22, 
+     "quantity": 1,
      "description":"camisa over color verde"},
 
     {
@@ -67,6 +77,7 @@
             "categoryId": 3,
              "image":"https://i.ibb.co/Ptmxt1g/camisatita.webp", 
              "stock": 22, 
+             "quantity": 1,
              "description":"camisa over de ecocuero"},
     {
          "id": "8",
@@ -76,6 +87,7 @@
             "categoryId": 4,
              "image":"https://i.ibb.co/4ZLGCrZ/faldalola.webp",
               "stock": 22,
+              "quantity": 1,
                "description":"falda estampada, larga con tajo"},
     {
          "id": "9",
@@ -85,6 +97,7 @@
             "categoryId": 4,
              "image": "https://i.ibb.co/myJSkZ8/faltachofa.webp",
               "stock": 22,
+              "quantity": 1,
                "description":"mini rosa, con botones y tajo"}
-
+               
 ]

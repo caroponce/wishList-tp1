@@ -18,6 +18,9 @@
         {
             "id": 4,
             "categoryName": "Falda"
+        },
+        {
+            "id": 5,
+            "categoryName": "Pantalones"
         }
-
 ]

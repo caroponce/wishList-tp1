@@ -1,13 +1,14 @@
 import { FlatList, SafeAreaView, Text, View, Image, Button, TouchableOpacity, useWindowDimensions} from "react-native";
 import { useState } from "react";
 import { styles } from "./styles";
-import PRODUCTS from '../../constants/data/products.json'
 import { Ionicons} from '@expo/vector-icons'
-import { COLORS } from "../../themes";
 import { Input } from "../../components";
+import {useSelector} from 'react-redux'
 
 
 function Products ({navigation, route}) {
+    const products = useSelector((state) => state.products.data)
+
     const {categoryId} = route.params;
     const {height, width} = useWindowDimensions();
     const [search, setSearch] = useState('')
@@ -17,7 +18,7 @@ function Products ({navigation, route}) {
         setSearch(text);
         filterBySearch(text);
     }
-    const filteredByCategory = PRODUCTS.filter((product) => product.categoryId === categoryId);
+    const filteredByCategory = products.filter((product) => product.categoryId === categoryId);
 
     const filterBySearch = (text) => {
         let updatedProductList = [...filteredByCategory]

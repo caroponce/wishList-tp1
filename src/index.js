@@ -3,37 +3,13 @@ import { useFonts} from 'expo-font'
 import { COLORS } from './themes';
 import RootNavigator from './navigations';
 
+import { Provider } from 'react-redux';
+import {store} from './store'
 export default function App() {
   const [loaded] = useFonts ({
     'Mulish-Regular': require('../assets/fonts/Mulish-Regular.ttf')
   });
- 
-//   const [selectedCategory, setSelectedCategory] = useState(null)
-//   const [isCategorySelected, setIsCategorySelected] = useState(false);
-//   const [isVisible, setIsvisible] = useState(false);
-//   const [selectedProductId, setSelectedProductId] = useState(null);
-//   const [selectedProduct, setSelectedProduct] = useState(null);
 
-
-//   const onHandleSelectCategory = (categoryId) => {
-    
-//     setSelectedCategory(categoryId)     
-     
-//     setIsCategorySelected(!isCategorySelected)
-//     console.warn(categoryId)
-// }
-// const onHandleNavigate = () => {
-//   setIsCategorySelected(!isCategorySelected);
-//   setSelectedCategory(null);
-// }
-// const onHandleGoDetail = (productId) => {
-//   const selectedProduct = PRODUCTS.find((products) => products.id === productId);
-//   console.warn(selectedProduct)
-
-//   setSelectedProduct(selectedProduct);
-//   setIsvisible(true);
-
-// };
 
 if (!loaded) {
   return (
@@ -44,26 +20,14 @@ if (!loaded) {
 }
 
 return(
+  <Provider store={store}>
   <SafeAreaView style={styles.container}>
     <RootNavigator/>
-  {/* <View style={styles.container}>
-  <Header title='WishList'/>
-  {
-        isCategorySelected ? (
-          <Products categorySelected={selectedCategory} onHandleGoBack={onHandleNavigate} onHandleGoDetail={onHandleGoDetail}/>
-        ) : (
-          
-      <Categories onSelectCategory={onHandleSelectCategory}/>
-        )
-      }
-  </View>
-  <ModalItem
-  isVisible={isVisible}
-  setIsvisible={setIsvisible}
-  selectedProduct={selectedProduct}
-  /> */}
+  
+
   
   </SafeAreaView>
+  </Provider>
 )
 }
  
