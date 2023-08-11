@@ -1,15 +1,16 @@
-import { FlatList, SafeAreaView, Text, View, Image, Button, TouchableOpacity, useWindowDimensions} from "react-native";
+import { FlatList, SafeAreaView, Text, View, Image, Button, TouchableOpacity, ActivityIndicator, useWindowDimensions} from "react-native";
 import { useState } from "react";
 import { styles } from "./styles";
 import { Ionicons} from '@expo/vector-icons'
 import { Input } from "../../components";
 import {useSelector} from 'react-redux'
+import { useGetProductsByCategoryQuery } from "../../store/products/api";
 
 
 function Products ({navigation, route}) {
-    const products = useSelector((state) => state.products.data)
-
+    //const products = useSelector((state) => state.products.data)
     const {categoryId} = route.params;
+    const {data, isLoading, error } = useGetProductsByCategoryQuery(categoryId); 
     const {height, width} = useWindowDimensions();
     const [search, setSearch] = useState('')
     const [filteredProducts, setFilteredProducts] = useState([])
@@ -18,8 +19,7 @@ function Products ({navigation, route}) {
         setSearch(text);
         filterBySearch(text);
     }
-    const filteredByCategory = products.filter((product) => product.categoryId === categoryId);
-
+    const filteredByCategory = data?.filter((product) => product.categoryId === categoryId);
     const filterBySearch = (text) => {
         let updatedProductList = [...filteredByCategory]
 
@@ -34,9 +34,15 @@ function Products ({navigation, route}) {
         setSearch('');
         setFilteredProducts([]);
     }
-    const onHandleGoDetail = ({productId}) => {
+     const onHandleGoDetail = ({productId}) => {
         navigation.navigate('ProductDetail', {productId})
     }
+   
+    if (isLoading) return (
+        <View style={styles.loader}>       
+      <ActivityIndicator></ActivityIndicator>
+        </View>
+      )
     return(
        <View>
              <View style={styles.header}>
@@ -56,8 +62,11 @@ function Products ({navigation, route}) {
             <View style={styles.detailProduct}>
             <Text style={height<450 ? styles.productnameLandsCape : isTablet? styles.productNameTablet : styles.productName}> {item.categoryName} {item.name} </Text>
             <Text style={height<450 ? styles.productPriceLandsCape : isTablet? styles.productPriceTablet : styles.productPrice }> ${item.price}</Text>
-            <TouchableOpacity style={isTablet? styles.detalleTablet : height<450 ? detalleLandscape : styles.detalle} onPress={() => onHandleGoDetail({productId: item.id})}>
-                 <Text style={styles.textdetalle}> Detalle </Text> 
+            <TouchableOpacity
+             style={isTablet ? styles.detalleTablet : height < 450 ? detalleLandscape : styles.detalle}
+            onPress={() => onHandleGoDetail({ productId: item.id })}
+                >
+             <Text style={styles.textdetalle}>Detalle</Text>
             </TouchableOpacity>
             </View>
             </View>

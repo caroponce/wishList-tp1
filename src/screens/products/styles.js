@@ -95,5 +95,10 @@ export const styles = StyleSheet.create({
     goBack: {
       paddingHorizontal: 20,
       paddingBottom: 10,
+    },
+    loader: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
     }
  })

@@ -13,7 +13,7 @@ export default function App() {
 
 if (!loaded) {
   return (
-    <View style={styles.loaderContainer}>
+    <View style={styles.loader}>
       <ActivityIndicator color={COLORS.primary} size="large" />
     </View>
   );
@@ -21,13 +21,13 @@ if (!loaded) {
 
 return(
   <Provider store={store}>
-  <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
     <RootNavigator/>
   
 
-  
-  </SafeAreaView>
+    </View>
   </Provider>
+ 
 )
 }
  
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: COLORS.background
   },
-  loaderContainer: {
+  loader: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',

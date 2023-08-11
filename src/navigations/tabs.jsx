@@ -4,8 +4,7 @@ import CartNavigator from './cart';
 import { COLORS } from '../themes';
 import { Ionicons } from '@expo/vector-icons/';
 import {useSelector} from 'react-redux'
-import { UseSelector } from 'react-redux/es/hooks/useSelector';
-
+import OrdersNavigator from './orders';
 const BottomTab = createBottomTabNavigator();
 
 
@@ -51,7 +50,14 @@ const TabsNavigator = () => {
             }
         }}
         />
-        
+           <BottomTab.Screen name='OrdersTab' component={OrdersNavigator}
+        options={{
+            tabBarLabel: 'Orders',
+            tabBarIcon: ({focused, color, size}) => {
+               return <Ionicons name={ focused ? 'file-tray' : 'file-tray-outline'} size={size} color={color}/>
+            }
+        }}/> 
+   
      </BottomTab.Navigator> 
     )
 }

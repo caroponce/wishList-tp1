@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { sumTotal } from "../../functions";
 const initialState = {
     items: [],
     total: 0
@@ -14,27 +14,36 @@ const cartSlice = createSlice({
             const itemInCart = state.items.find((item) => item.id === action.payload.id)
             if(itemInCart) {
                 itemInCart.quantity += 1;
+                state.total = sumTotal(state.items);
             } else {
                 state.items.push({... action.payload})
+                state.total = sumTotal(state.items);
             }
         },
         increaseQuantity: (state, action) => {
             const itemInCart = state.items.find((item) => item.id === action.payload.id);
             if (itemInCart && itemInCart.stock > itemInCart.quantity) {
               itemInCart.quantity += 1;
+              state.total = sumTotal(state.items);
             }
         },
         decreaseQuantity: (state, action) => {
             const itemInCart = state.items.find((item) => item.id === action.payload.id);
             if (itemInCart && itemInCart.quantity > 1) {
               itemInCart.quantity -= 1;
+              state.total = sumTotal(state.items);
             }
           },
           removeItem: (state, action) => {
-            state.items = state.items.filter((item) => item.id !== action.payload.id);
+           const removedItem = state.items = state.items.filter((item) => item.id !== action.payload.id);
+            if (removedItem) {
+              state.items = state.items.filter((item) => item.id !== action.payload.id);
+              state.total = sumTotal(state.items);
+            }
           },
-          removeAll: (state, action) => {
+          removeAll: (state) => {
             state.items = [];
+            state.total = 0;
           },
     }
 })

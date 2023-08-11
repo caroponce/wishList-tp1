@@ -3,7 +3,7 @@ import { COLORS } from "../../themes";
 
 export const styles = StyleSheet.create({
     container: {
-       
+       flex: 1,
         marginHorizontal: 5,
         marginVertical: 10,
       },
@@ -15,6 +15,11 @@ export const styles = StyleSheet.create({
         marginHorizontal: 10,
         marginTop: 10,
       },
+      loader: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+      }
       //  categoryItemLandscape: {
       //   marginTop: 20
       //  }
